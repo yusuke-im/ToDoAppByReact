@@ -6,37 +6,47 @@ import './Todo.css'
 export const Todo = () => {
   return (
     <>
-    <div>
+    <div　className='input-area'>
       <input placeholder="Input Todo" />
       <button>Add</button>
     </div>
 
-    <div>
-      <p>Incomplete Todo</p>
+    <div className='incomplete-area'>
+      <p className='title'>Incomplete Todo</p>
       <ul>
         <li>
-          <p>Todo</p>
-          <button>Done</button>
-          <button>Delete</button>
+          <div className='list-row'>
+            <p className='todo-item'>Todo</p>
+            <button>Done</button>
+            <button>Delete</button>
+          </div>
+
         </li>
+  
         <li>
-          <p>Todo</p>
-          <button>Done</button>
-          <button>Delete</button>
+          <div className='list-row'>
+            <p className='todo-item'>Todo</p>
+            <button>Done</button>
+            <button>Delete</button>
+          </div>
         </li>
       </ul>
     </div>
 
-    <div>
-    <p>complete Todo</p>
+    <div className='complete-area'>
+    <p className='title'>complete Todo</p>
       <ul>
         <li>
-          <p>Todo</p>
-          <button>Restore</button>
+          <div className='list-row'>
+            <p className='todo-item'>Todo</p>
+            <button>Restore</button>
+          </div>
         </li>
         <li>
-          <p>Todo</p>
-          <button>Restore</button>
+          <div className='list-row'>
+            <p className='todo-item'>Todo</p>
+            <button>Restore</button>
+          </div>        
         </li>
       </ul>
     </div>
