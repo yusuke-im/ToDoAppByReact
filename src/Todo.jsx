@@ -4,8 +4,12 @@ import viteLogo from '/vite.svg'
 import './Todo.css'
 
 export const Todo = () => {
+  const [incompleteTodos, setIncompleteTodos] = useState(["todo1", "todo2"]);
+  const [completeTodos, setCompleteTodos] = useState(["todo3", "todo4"]);
+
   return (
     <>
+
     <div　className='input-area'>
       <input placeholder="Input Todo" />
       <button>Add</button>
@@ -14,42 +18,34 @@ export const Todo = () => {
     <div className='incomplete-area'>
       <p className='title'>Incomplete Todo</p>
       <ul>
-        <li>
-          <div className='list-row'>
-            <p className='todo-item'>Todo</p>
-            <button>Done</button>
-            <button>Delete</button>
-          </div>
-
-        </li>
-  
-        <li>
-          <div className='list-row'>
-            <p className='todo-item'>Todo</p>
-            <button>Done</button>
-            <button>Delete</button>
-          </div>
-        </li>
+        {incompleteTodos.map((todo) => (
+            <li key={todo}>
+            <div className='list-row'>
+              <p className='todo-item'>{todo}</p>
+              <button>Done</button>
+              <button>Delete</button>
+            </div>  
+          </li>
+          )           
+        )}
       </ul>
     </div>
 
     <div className='complete-area'>
     <p className='title'>complete Todo</p>
       <ul>
-        <li>
-          <div className='list-row'>
-            <p className='todo-item'>Todo</p>
-            <button>Restore</button>
-          </div>
-        </li>
-        <li>
-          <div className='list-row'>
-            <p className='todo-item'>Todo</p>
-            <button>Restore</button>
-          </div>        
-        </li>
+        {completeTodos.map((todo) => (
+              <li key={todo}>
+              <div className='list-row'>
+                <p className='todo-item'>{todo}</p>
+                <button>Restore</button>
+              </div>  
+            </li>
+            )           
+          )}
       </ul>
     </div>
+    
     </>
   );
 };
