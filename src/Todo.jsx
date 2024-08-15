@@ -5,8 +5,8 @@ import './Todo.css'
 
 export const Todo = () => {
   const [todoText, setTodoText] = useState("");
-  const [incompleteTodos, setIncompleteTodos] = useState(["todo1", "todo2"]);
-  const [completeTodos, setCompleteTodos] = useState(["todo3", "todo4"]);
+  const [incompleteTodos, setIncompleteTodos] = useState([]);
+  const [completeTodos, setCompleteTodos] = useState([]);
 
   const onChangeTodoText = (event) => setTodoText(event.target.value);
   const onClickAdd = () => {
@@ -31,6 +31,17 @@ export const Todo = () => {
     newTodos.splice(index, 1); 
   
     setIncompleteTodos(newTodos);
+  }
+
+  const onClickRestore = (index) =>{
+    const newCompleteTodos = [...completeTodos];
+    newCompleteTodos.splice(index, 1);  
+
+    const newIncompleteTodos = [...incompleteTodos, completeTodos[index]];
+
+    setCompleteTodos(newCompleteTodos);
+    setIncompleteTodos(newIncompleteTodos);
+
   }
 
   return (
@@ -60,11 +71,11 @@ export const Todo = () => {
     <div className='complete-area'>
     <p className='title'>complete Todo</p>
       <ul>
-        {completeTodos.map((todo) => (
+        {completeTodos.map((todo, index) => (
               <li key={todo}>
               <div className='list-row'>
                 <p className='todo-item'>{todo}</p>
-                <button>Restore</button>
+                <button onClick={ () => onClickRestore(index)}>Restore</button>
               </div>  
             </li>
             )           
