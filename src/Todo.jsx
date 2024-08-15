@@ -15,9 +15,21 @@ export const Todo = () => {
     setIncompleteTodos(newTodos);
     setTodoText("");
   };
+
+  const onClickComplete = (index) => {
+    const newIncompleteTodos = [...incompleteTodos];
+    newIncompleteTodos.splice(index, 1);  
+
+    const newCompleteTodos = [...completeTodos, incompleteTodos[index]];
+
+    setIncompleteTodos(newIncompleteTodos);
+    setCompleteTodos(newCompleteTodos);
+  }
+
   const onClickDelte = (index) => {
     const newTodos = [...incompleteTodos];
-    newTodos.splice(index, 1);
+    newTodos.splice(index, 1); 
+  
     setIncompleteTodos(newTodos);
   }
 
@@ -36,7 +48,7 @@ export const Todo = () => {
             <li key={todo}>
             <div className='list-row'>
               <p className='todo-item'>{todo}</p>
-              <button>Done</button> 
+              <button onClick={ () => onClickComplete(index)}>Done</button> 
               <button onClick={ () => onClickDelte(index)}>Delete</button>
             </div>  
           </li>
